@@ -11,14 +11,21 @@ public class Audio : MonoBehaviour
     public static Audio instance = null;     //Allows other scripts to call functions from SoundManager.             
                                              //The highest a sound effect will be randomly pitched.
     //sliders for sound
-    public float efxSlider = 0.5f;
-    public float musicSlider = 0.5f;
+    public Slider efxSlider;
+    public Slider musicSlider;
 
+    void Start()
+    {
+        musicSlider.value = PlayerPrefs.GetFloat("Music Volume");
+        efxSlider.value = PlayerPrefs.GetFloat("Efx Volume");
+    }
 
     void Update()
     {
-        efxSource.volume = efxSlider;
-        musicSource.volume = musicSlider;
+        efxSource.volume = efxSlider.value;
+        musicSource.volume = musicSlider.value;
+        PlayerPrefs.SetFloat("Music Volume", musicSource.volume);
+        PlayerPrefs.SetFloat("Efx Volume", efxSlider.value);
     }
 
     void Awake()
@@ -44,14 +51,6 @@ public class Audio : MonoBehaviour
         efxSource.Play();
     }
 
-    public void SetMusicVolume(float musicVol)
-    {
-        musicSlider = musicVol;
-    }
-
-    public void SetEfxVolume(float efxVol)
-    {
-        efxSlider = efxVol;
-    }
+    
 
 }
