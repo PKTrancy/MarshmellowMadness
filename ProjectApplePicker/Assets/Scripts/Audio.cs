@@ -20,13 +20,6 @@ public class Audio : MonoBehaviour
         efxSlider.value = PlayerPrefs.GetFloat("Efx Volume");
     }
 
-    void Update()
-    {
-        efxSource.volume = efxSlider.value;
-        musicSource.volume = musicSlider.value;
-        PlayerPrefs.SetFloat("Music Volume", musicSource.volume);
-        PlayerPrefs.SetFloat("Efx Volume", efxSlider.value);
-    }
 
     void Awake()
     {
@@ -51,6 +44,16 @@ public class Audio : MonoBehaviour
         efxSource.Play();
     }
 
-    
+    public void SetMusicVolume()
+    {
+        musicSource.volume = musicSlider.value;
+        PlayerPrefs.SetFloat("Music Volume", musicSource.volume);
+    }
+
+    public void SetEfxVolume()
+    {
+        efxSource.volume = efxSlider.value;
+        PlayerPrefs.SetFloat("Efx Volume", efxSlider.value);
+    }
 
 }

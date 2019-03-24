@@ -11,6 +11,8 @@ public class MarshmellowPicker : MonoBehaviour
     public float CocoaBottomY = -300f;
     public float CocoaSpacingY = 2f;
     public Text playerLives;
+    public highscore hs;
+    public Cocoa c;
 
     public List<GameObject> cocoaList;
     // Start is called before the first frame update
@@ -28,6 +30,8 @@ public class MarshmellowPicker : MonoBehaviour
         GameObject lives = GameObject.Find("Lives");
         playerLives = lives.GetComponent<Text>();
         playerLives.text = "3";
+
+
     }
 
     // Update is called once per frame
@@ -53,6 +57,7 @@ public class MarshmellowPicker : MonoBehaviour
         //rstart
         if (cocoaList.Count == 0)
         {
+            hs.EndGame();
             SceneManager.LoadScene("End");
 
         }

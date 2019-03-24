@@ -40,6 +40,7 @@ public class Cocoa : MonoBehaviour
             int score = int.Parse(scoreGT.text);
             score += 100;
             scoreGT.text = score.ToString();
+            PlayerPrefs.SetInt("Current Score", score);
         }
     }
 }
